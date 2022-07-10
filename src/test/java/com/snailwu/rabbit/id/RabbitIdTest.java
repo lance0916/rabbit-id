@@ -19,17 +19,16 @@ public class RabbitIdTest {
 
         // 定时输出 QPS
         Executors.newScheduledThreadPool(1).scheduleAtFixedRate(() -> {
-            log.info("当前秒Id生成数:{}", count);
+            log.info("当前秒Id生成数:{}万", count.get() / 10000);
             count.getAndSet(0);
         }, 0, 1, TimeUnit.SECONDS);
 
         // 循环生成
         RabbitId snowflake = new RabbitId(1, 1);
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 100; i++) {
             new Thread(() -> {
                 while (true) {
                     long id = snowflake.nextId();
-                    log.info("nextId={}", id);
                     count.incrementAndGet();
                 }
             }).start();
