@@ -2,8 +2,6 @@ package com.snailwu.rabbit.id;
 
 import java.lang.management.ManagementFactory;
 import java.net.NetworkInterface;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * SnowFlake的结构如下(每部分用-分开):<br>
@@ -25,7 +23,6 @@ import org.slf4j.LoggerFactory;
  * @author WuQinglong
  */
 public class RabbitId {
-    private static final Logger log = LoggerFactory.getLogger(NetUtil.class);
 
     /**
      * 时间起始标记点，作为基准，一般取系统的最近时间（一旦确定不能变动）
@@ -90,8 +87,6 @@ public class RabbitId {
     public RabbitId() {
         this.datacenterId = dataCenterId();
         this.workerId = workerId(dataCenterId());
-        log.info("datacenterId={}", this.datacenterId);
-        log.info("workerId={}", this.workerId);
     }
 
     public RabbitId(long datacenterId, long workerId) {
@@ -119,7 +114,7 @@ public class RabbitId {
             id = (0x000000FF & mac[mac.length - 2]) | (0x0000FF00 & (mac[mac.length - 1] << 8));
             id = id % (MAX_DATA_CENTER_ID + 1);
         } catch (Exception e) {
-            log.warn("getDatacenterId: " + e.getMessage());
+            throw new RuntimeException(e);
         }
         return id;
     }
