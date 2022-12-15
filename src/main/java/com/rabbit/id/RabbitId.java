@@ -1,4 +1,4 @@
-package com.snailwu.rabbit.id;
+package com.rabbit.id;
 
 import java.lang.management.ManagementFactory;
 import java.net.NetworkInterface;

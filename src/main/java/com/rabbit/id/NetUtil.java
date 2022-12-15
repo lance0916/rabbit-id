@@ -1,4 +1,4 @@
-package com.snailwu.rabbit.id;
+package com.rabbit.id;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -23,7 +23,7 @@ public class NetUtil {
     }
 
     private static InetAddress getLocalAddress0() throws Exception {
-        InetAddress localAddress = null;
+        InetAddress localAddress;
         localAddress = InetAddress.getLocalHost();
         if (isValidAddress(localAddress)) {
             return localAddress;
@@ -49,7 +49,8 @@ public class NetUtil {
         }
 
         String name = address.getHostAddress();
-        return (name != null && !"0.0.0.0".equals(name) && !"127.0.0.1".equals(name) && IP_PATTERN.matcher(name).matches());
+        return (name != null && !"0.0.0.0".equals(name) && !"127.0.0.1".equals(name)
+                && IP_PATTERN.matcher(name).matches());
     }
 
 }
