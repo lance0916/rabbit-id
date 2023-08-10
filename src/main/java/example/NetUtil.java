@@ -1,4 +1,4 @@
-package com.rabbit.id;
+package example;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;

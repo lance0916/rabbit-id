@@ -1,4 +1,4 @@
-package com.rabbit.id;
+package example;
 
 import org.junit.Test;
 import org.slf4j.Logger;

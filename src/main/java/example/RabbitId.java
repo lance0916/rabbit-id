@@ -1,4 +1,4 @@
-package com.rabbit.id;
+package example;
 
 import java.lang.management.ManagementFactory;
 import java.net.NetworkInterface;
